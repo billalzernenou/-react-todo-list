@@ -1,9 +1,10 @@
 import "./App.css";
+import Tasks from "./Tasks";
 
 function App() {
   return (
     <div>
-      Hello from <a href="https://www.lereacteur.io">Le Reacteur !</a>
+      <Tasks />
     </div>
   );
 }
