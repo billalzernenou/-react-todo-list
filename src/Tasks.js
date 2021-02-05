@@ -10,37 +10,33 @@ const Tasks = () => {
         {/* map throw assignments */}
         {assignments.map((assignment, index) => {
           return (
-            <div>
+            <div key={index}>
               <span>
                 {/* ternary assignement checked   */}
-                {assignment[1] ? (
-                  <input
-                    type="checkbox"
-                    // set isChecked to false
-                    onClick={() => {
-                      const newAssignments = [...assignments];
-                      newAssignments[index][1] = false;
-                      setAssignments(newAssignments);
-                    }}
-                    Checked
-                  />
-                ) : (
-                  <input
-                    type="checkbox"
-                    // set isChecked to true
-                    onClick={() => {
-                      const newAssignments = [...assignments];
-                      newAssignments[index][1] = true;
-                      setAssignments(newAssignments);
-                    }}
-                  />
-                )}
+                {/* {assignment.checked ? ( */}
+                <input
+                  type="checkbox"
+                  // set isChecked to false
+                  onClick={() => {
+                    const newAssignments = [...assignments];
+                    if (assignment.checked) {
+                      newAssignments[index].checked = false;
+                    } else {
+                      newAssignments[index].checked = true;
+                    }
+
+                    setAssignments(newAssignments);
+                  }}
+                  style={{
+                    checked: assignment.checked ? false : true,
+                  }}
+                />
               </span>
               <span
                 // set assignement isChecked apply style
-                style={{ "text-decoration": assignment[1] && "line-through" }}
+                style={{ textDecoration: assignment.checked && "line-through" }}
               >
-                {assignment}
+                {assignment.content}
               </span>
               <button
                 // delete assignement
@@ -58,6 +54,7 @@ const Tasks = () => {
       </div>
       <div>
         <input
+          id="input-field"
           type="text"
           placeholder="nex task!"
           value={input}
@@ -73,10 +70,13 @@ const Tasks = () => {
             /* newAssignment  is an array : first value content 
             : second element is a boolean related to the assignement if it's done or not
             */
-            const newAssignment = [input, false];
+
+            const newAssignment = { content: input, checked: false };
             newAssignments.push(newAssignment);
 
             setAssignments(newAssignments);
+            // reset input
+            setInput("");
           }}
         >
           add task
