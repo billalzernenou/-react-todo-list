@@ -49,9 +49,6 @@ const Tasks = () => {
                   <input
                     type="checkbox"
                     onClick={() => handleClickAchived(assignment, index)}
-                    style={{
-                      checked: assignment.checked ? false : true,
-                    }}
                   />
                 </div>
                 <div
@@ -89,9 +86,7 @@ const Tasks = () => {
                   <input
                     type="checkbox"
                     onClick={() => handleClickAchived(assignment, index)}
-                    style={{
-                      checked: assignment.checked ? false : true,
-                    }}
+                    checked
                   />
                 </div>
                 <div
