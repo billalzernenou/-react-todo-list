@@ -1,1 +1,118 @@
 /* Other rules */
+.App {
+  font-family: "Montserrat", sans-serif;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/*------------------------------------------------------*/
+/*-------------------------HEADER-----------------------*/
+/*------------------------------------------------------*/
+.header {
+  display: flex;
+  height: 120px;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  box-sizing: border-box;
+}
+.header .brand {
+  display: flex;
+  margin-left: 80px;
+}
+.header h1 {
+  font-size: 40px;
+  margin-left: 15px;
+}
+
+/*------------------------------------------------------*/
+/*-------------------------TASKS-----------------------*/
+/*------------------------------------------------------*/
+.tasks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 300px;
+}
+.tasks .assignements {
+  height: 65%;
+  overflow: hidden;
+  overflow-y: scroll;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.tasks .assignements .assignement {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.tasks .assignements .assignement div:nth-child(2) {
+  flex: 1;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e5e5e5;
+  margin-left: 5px;
+}
+.tasks .assignements .assignement div p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  line-height: 120%;
+}
+.tasks .assignements .assignement div button {
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: block;
+}
+
+/*------------------------------------------------------*/
+/*-------------------------ADD ASSIGNEMENTS-------------*/
+/*------------------------------------------------------*/
+.tasks .add-assignements {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+.tasks .add-assignements input {
+  width: 80%;
+  background: #f2f7fd;
+  border: 1px solid #5c48d3;
+  box-sizing: border-box;
+  border-radius: 10px;
+  outline: none;
+  height: 40px;
+  text-align: center;
+  margin-right: 20px;
+}
+.tasks .add-assignements button {
+  width: 120px;
+  height: 40px;
+  background: #5c48d3;
+  border-radius: 10px;
+  color: #ffff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+/*------------------------------------------------------*/
+/*-------------------------MEDIA-----------------------*/
+/*------------------------------------------------------*/
+@media (max-width: 780px) {
+  .container {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .tasks .add-assignements {
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+  }
+  .tasks .add-assignements input {
+    margin-bottom: 20px;
+  }
+}

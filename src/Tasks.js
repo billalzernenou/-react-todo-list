@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Tasks = () => {
   // declare state array to contain tasks -- u called it assignment  to avoid interference with the class name
   const [assignments, setAssignments] = useState([]);
@@ -35,13 +36,13 @@ const Tasks = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className="tasks container">
+      <div className="assignements">
         {/* map throw assignments */}
         {assignments.map((assignment, index) => {
           return (
-            <div key={index}>
-              <span>
+            <div className="assignement" key={index}>
+              <div>
                 {/* ternary assignement checked   */}
                 {/* {assignment.checked ? ( */}
                 <input
@@ -51,24 +52,26 @@ const Tasks = () => {
                     checked: assignment.checked ? false : true,
                   }}
                 />
-              </span>
-              <span
+              </div>
+              <div
                 // set assignement isChecked apply style
                 style={{ textDecoration: assignment.checked && "line-through" }}
               >
-                {assignment.content}
-              </span>
-              <button
-                // delete assignement
-                onClick={() => handleClickDeleteAssignement(index)}
-              >
-                *
-              </button>
+                <p>{assignment.content}</p>
+              </div>
+              <div>
+                <button
+                  // delete assignement
+                  onClick={() => handleClickDeleteAssignement(index)}
+                >
+                  <FontAwesomeIcon icon="trash-alt" color="#5C48D3" size="1x" />
+                </button>
+              </div>
             </div>
           );
         })}
       </div>
-      <div>
+      <div className="add-assignements">
         <input
           id="input-field"
           type="text"
