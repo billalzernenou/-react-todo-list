@@ -114,5 +114,6 @@
   }
   .tasks .add-assignements input {
     margin-bottom: 20px;
+    margin-right: 0px;
   }
 }
