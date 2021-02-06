@@ -38,39 +38,88 @@ const Tasks = () => {
   return (
     <div className="tasks container">
       <div className="assignements">
-        {/* map throw assignments */}
+        {/* map throw assignments  */}
         {assignments.map((assignment, index) => {
           return (
-            <div className="assignement" key={index}>
-              <div>
-                {/* ternary assignement checked   */}
-                {/* {assignment.checked ? ( */}
-                <input
-                  type="checkbox"
-                  onClick={() => handleClickAchived(assignment, index)}
+            !assignment.checked && (
+              <div className="assignement" key={index}>
+                <div>
+                  {/* ternary assignement checked   */}
+                  {/* {assignment.checked ? ( */}
+                  <input
+                    type="checkbox"
+                    onClick={() => handleClickAchived(assignment, index)}
+                    style={{
+                      checked: assignment.checked ? false : true,
+                    }}
+                  />
+                </div>
+                <div
+                  // set assignement isChecked apply style
                   style={{
-                    checked: assignment.checked ? false : true,
+                    textDecoration: assignment.checked && "line-through",
                   }}
-                />
-              </div>
-              <div
-                // set assignement isChecked apply style
-                style={{ textDecoration: assignment.checked && "line-through" }}
-              >
-                <p>{assignment.content}</p>
-              </div>
-              <div>
-                <button
-                  // delete assignement
-                  onClick={() => handleClickDeleteAssignement(index)}
                 >
-                  <FontAwesomeIcon icon="trash-alt" color="#5C48D3" size="1x" />
-                </button>
+                  <p>{assignment.content}</p>
+                </div>
+                <div>
+                  <button
+                    // delete assignement
+                    onClick={() => handleClickDeleteAssignement(index)}
+                  >
+                    <FontAwesomeIcon
+                      icon="trash-alt"
+                      color="#5C48D3"
+                      size="1x"
+                    />
+                  </button>
+                </div>
               </div>
-            </div>
+            )
+          );
+        })}
+        {/* ---------------------------------------------------- */}
+        {assignments.map((assignment, index) => {
+          return (
+            assignment.checked && (
+              <div className="assignement" key={index}>
+                <div>
+                  {/* ternary assignement checked   */}
+                  {/* {assignment.checked ? ( */}
+                  <input
+                    type="checkbox"
+                    onClick={() => handleClickAchived(assignment, index)}
+                    style={{
+                      checked: assignment.checked ? false : true,
+                    }}
+                  />
+                </div>
+                <div
+                  // set assignement isChecked apply style
+                  style={{
+                    textDecoration: assignment.checked && "line-through",
+                  }}
+                >
+                  <p>{assignment.content}</p>
+                </div>
+                <div>
+                  <button
+                    // delete assignement
+                    onClick={() => handleClickDeleteAssignement(index)}
+                  >
+                    <FontAwesomeIcon
+                      icon="trash-alt"
+                      color="#5C48D3"
+                      size="1x"
+                    />
+                  </button>
+                </div>
+              </div>
+            )
           );
         })}
       </div>
+      {/* add assignement section */}
       <div className="add-assignements">
         <input
           id="input-field"
