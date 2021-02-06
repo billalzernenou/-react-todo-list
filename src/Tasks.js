@@ -4,6 +4,36 @@ const Tasks = () => {
   const [assignments, setAssignments] = useState([]);
   // declare state for input
   const [input, setInput] = useState("");
+
+  const handleClickAddAssignement = () => {
+    const newAssignments = [...assignments];
+    /* newAssignment  is an array : first value content 
+    : second element is a boolean related to the assignement if it's done or not
+    */
+    const newAssignment = { content: input, checked: false };
+    newAssignments.push(newAssignment);
+
+    setAssignments(newAssignments);
+    // reset input
+    setInput("");
+  };
+
+  const handleClickDeleteAssignement = (index) => {
+    let modifiedAssignments = [...assignments];
+    modifiedAssignments.splice(index, 1);
+    setAssignments(modifiedAssignments);
+  };
+
+  const handleClickAchived = (assignment, index) => {
+    const newAssignments = [...assignments];
+    if (assignment.checked) {
+      newAssignments[index].checked = false;
+    } else {
+      newAssignments[index].checked = true;
+    }
+    setAssignments(newAssignments);
+  };
+
   return (
     <div>
       <div>
@@ -16,17 +46,7 @@ const Tasks = () => {
                 {/* {assignment.checked ? ( */}
                 <input
                   type="checkbox"
-                  // set isChecked to false
-                  onClick={() => {
-                    const newAssignments = [...assignments];
-                    if (assignment.checked) {
-                      newAssignments[index].checked = false;
-                    } else {
-                      newAssignments[index].checked = true;
-                    }
-
-                    setAssignments(newAssignments);
-                  }}
+                  onClick={() => handleClickAchived(assignment, index)}
                   style={{
                     checked: assignment.checked ? false : true,
                   }}
@@ -40,11 +60,7 @@ const Tasks = () => {
               </span>
               <button
                 // delete assignement
-                onClick={() => {
-                  let modifiedAssignments = [...assignments];
-                  modifiedAssignments.splice(index, 1);
-                  setAssignments(modifiedAssignments);
-                }}
+                onClick={() => handleClickDeleteAssignement(index)}
               >
                 *
               </button>
@@ -58,26 +74,13 @@ const Tasks = () => {
           type="text"
           placeholder="nex task!"
           value={input}
-          // input update while typing
           onChange={(event) => {
             setInput(event.target.value);
           }}
         />
         <button
           // add new assignement
-          onClick={() => {
-            const newAssignments = [...assignments];
-            /* newAssignment  is an array : first value content 
-            : second element is a boolean related to the assignement if it's done or not
-            */
-
-            const newAssignment = { content: input, checked: false };
-            newAssignments.push(newAssignment);
-
-            setAssignments(newAssignments);
-            // reset input
-            setInput("");
-          }}
+          onClick={handleClickAddAssignement}
         >
           add task
         </button>
